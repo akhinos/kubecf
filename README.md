@@ -17,4 +17,5 @@ It makes use of the [Cloud Foundry Operator](https://github.com/cloudfoundry-inc
 
 ## Developing
 
-Refer to [dev/README.md](dev/README.md).
+Contributors should read [dev/README.md](dev/README.md) and referenced documents.
+
