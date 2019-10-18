@@ -18,7 +18,7 @@ Contributors should read this document.
 
 ## Deployment
 
-
+With the requisites done [Kubecf can be deployed](scf/README.md).
 
 ## Pull Requests
 
@@ -48,6 +48,8 @@ features, etc. is
 
 ## Directories
 
+todo
+
 An important part of that are the resources for the deployment of kube
 clusters using either Minikube or Kind as foundations.
 
@@ -59,3 +61,27 @@ TODO: Explain
   - scf
 
 Also, see SCF develop docs in [scf/README.md](scf/README.md).
+
+
+TODO:
+	deploy/helm/scf/
+		assets/
+		templates/
+
+TODO:
+	bosh/releases/pre_render_scripts/...
+	(patches)
+
+	bosh/releases/pre_render_scripts/*/*/*/patch_*
+
+	bosh/releases/pre_render_scripts/README.md
+
+/instance_groups/name=${INSTANCE_GROUP}/jobs/name=${JOB}/properties/quarks?/pre_render_scripts/${TYPE}
+
+	type in jobs, ig_resolver, bpm
+
+TODO:
+	testing
+
+TODO:
+	rules

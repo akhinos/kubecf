@@ -1,3 +1,15 @@
+
+TODO dev/snippet*.md files
+TODO - pieces of old docs not yet placed anywhere in the new.
+
+TODO system_domain
+TODO - What it is for
+TODO - Setting for the various foundations (minikube, kind, gke, ...)
+
+TODO exposing cluster
+TODO - (service, ingress)
+TODO - interaction with foundations
+
 # Kubecf
 
 ## Requisites
@@ -46,5 +58,4 @@ bazel run //dev/scf:delete
 The targets defined in this directory are used to generate and apply a
 rendered Helm template to a Kubernetes cluster.
 
-The [docs](./docs/) sub-directory contains more details. Start with
-[Installing SCF](./docs/installing.md).
+The [docs](./docs/) sub-directory contains more details.
