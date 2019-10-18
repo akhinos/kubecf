@@ -15,7 +15,7 @@ It makes use of the [Cloud Foundry Operator](https://github.com/cloudfoundry-inc
 | Cloud Foundry Operator     | https://github.com/cloudfoundry-incubator/cf-operator/       |
 | CF Operator builds         | https://cf-operators.s3.amazonaws.com/helm-charts/index.html |
 
-## Developing
+## Developing, Contributing
 
 Contributors should read [dev/README.md](dev/README.md) and referenced documents.
 
