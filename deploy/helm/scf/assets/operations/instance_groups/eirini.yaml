@@ -1,4 +1,5 @@
-{{- if .Values.features.eirini -}}
+{{- if .Values.features.eirini.enabled -}}
+{{- if .Values.features.eirini.included -}}
 
 # Add the eirini BOSH DNS alias.
 - type: replace
@@ -244,4 +245,5 @@
 {{ $root.Files.Get $path }}
 {{- end }}
 
+{{- end }}
 {{- end }}

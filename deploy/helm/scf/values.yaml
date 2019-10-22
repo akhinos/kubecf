@@ -31,7 +31,9 @@ service:
   clusterIP: ~
 
 features:
-  eirini: false
+  eirini:
+    enabled: true
+    included: false
   ingress:
     enabled: false
     tls:

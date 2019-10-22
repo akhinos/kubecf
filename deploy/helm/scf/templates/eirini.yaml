@@ -1,4 +1,4 @@
-{{- if eq .Values.features.eirini true -}}
+{{- if eq .Values.features.eirini.enabled true -}}
 
 # A service for the cc uploader
 ---
@@ -21,6 +21,7 @@ spec:
       port: 9091
       targetPort: 9091
 # A service for the eirini image registry
+{{- if .Values.features.eirini.included}}
 ---
 apiVersion: v1
 kind: Service
@@ -35,12 +36,14 @@ spec:
     - protocol: TCP
       port: 443
       targetPort: 443
+{{- end }}
 ---
 # A namespace where eirini apps are created
 apiVersion: v1
 kind: Namespace
 metadata:
   name: {{ .Values.deployment_name }}-eirini
+{{- if .Values.features.eirini.included}}
 ---
 # A godlike ServiceAccount for Eirini
 # TODO: this can be restricted
@@ -63,6 +66,7 @@ subjects:
   - kind: ServiceAccount
     name: {{ .Values.deployment_name }}-eirini
     namespace: {{ .Release.Namespace | quote }}
+{{- end }}
 ---
 apiVersion: v1
 kind: ConfigMap
