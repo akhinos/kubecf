@@ -1,0 +1,110 @@
+- type: replace
+  path: /instance_groups/name=adapter/jobs/name=adapter/properties?/quarks?/bpm?/processes?/-
+  value:
+    name: adapter
+    requests:
+      cpu: 16m
+      memory: 72Mi
+
+- type: replace
+  path: /instance_groups/name=api/jobs/name=cc_uploader/properties?/quarks?/bpm?/processes?/-
+  value:
+    name: cc_uploader
+    requests:
+      cpu: 190m
+      memory: 1208Mi
+
+- type: replace
+  path: /instance_groups/name=bits/jobs/name=bits-service/properties?/quarks?/bpm?/processes?/-
+  value:
+    name: bits-service
+    requests:
+      cpu: 10m
+      memory: 78Mi
+
+- type: replace
+  path: /instance_groups/name=cc-worker/jobs/name=cloud_controller_worker/properties?/quarks?/bpm?/processes?/-
+  value:
+    name: worker_1
+    requests:
+      cpu: 72m
+      memory: 334Mi
+
+- type: replace
+  path: /instance_groups/name=diego-api/jobs/name=bbs/properties?/quarks?/bpm?/processes?/-
+  value:
+    name: bbs
+    requests:
+      cpu: 50m
+      memory: 94Mi
+
+- type: replace
+  path: /instance_groups/name=doppler/jobs/name=doppler/properties?/quarks?/bpm?/processes?/-
+  value:
+    name: doppler
+    requests:
+      cpu: 234m
+      memory: 1292Mi
+
+- type: replace
+  path: /instance_groups/name=eirini/jobs/name=eirini-loggregator-bridge/properties?/quarks?/bpm?/processes?/-
+  value:
+    name: eirini-loggregator-bridge
+    requests:
+      cpu: 10m
+      memory: 112Mi
+
+- type: replace
+  path: /instance_groups/name=log-api/jobs/name=loggregator_trafficcontroller/properties?/quarks?/bpm?/processes?/-
+  value:
+    name: loggregator_trafficcontroller
+    requests:
+      cpu: 36m
+      memory: 180Mi
+
+- type: replace
+  path: /instance_groups/name=nats/jobs/name=nats/properties?/quarks?/bpm?/processes?/-
+  value:
+    name: nats
+    requests:
+      cpu: 12m
+      memory: 100Mi
+
+- type: replace
+  path: /instance_groups/name=router/jobs/name=gorouter/properties?/quarks?/bpm?/processes?/-
+  value:
+    name: gorouter
+    requests:
+      cpu: 20m
+      memory: 124Mi
+
+- type: replace
+  path: /instance_groups/name=scheduler/jobs/name=cc_deployment_updater/properties?/quarks?/bpm?/processes?/-
+  value:
+    name: cc_deployment_updater
+    requests:
+      cpu: 58m
+      memory: 1224Mi
+
+- type: replace
+  path: /instance_groups/name=singleton-blobstore/jobs/name=blobstore/properties?/quarks?/bpm?/processes?/-
+  value:
+    name: nginx
+    requests:
+      cpu: 12m
+      memory: 130Mi
+
+- type: replace
+  path: /instance_groups/name=uaa/jobs/name=route_registrar/properties?/quarks?/bpm?/processes?/-
+  value:
+    name: route_registrar
+    requests:
+      cpu: 28m
+      memory: 936Mi
+
+- type: replace
+  path: /instance_groups/name=database/jobs/name=mysql/properties?/quarks?/bpm?/processes?/name=mariadb_ctrl/requests?
+  value:
+    cpu: 26m
+    memory: 934Mi
+
