@@ -86,6 +86,7 @@
       cpu: 58m
       memory: 1224Mi
 
+{{- if eq .Values.features.blobstore.provider "singleton" }}
 - type: replace
   path: /instance_groups/name=singleton-blobstore/jobs/name=blobstore/properties?/quarks?/bpm?/processes?/-
   value:
@@ -93,7 +94,7 @@
     requests:
       cpu: 12m
       memory: 130Mi
-
+{{- end }}
 - type: replace
   path: /instance_groups/name=uaa/jobs/name=route_registrar/properties?/quarks?/bpm?/processes?/-
   value:
