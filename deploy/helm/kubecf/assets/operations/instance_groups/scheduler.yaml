@@ -76,3 +76,11 @@
 {{- range $path, $bytes := .Files.Glob "assets/operations/pre_render_scripts/scheduler_*" }}
 {{ $root.Files.Get $path }}
 {{- end }}
+
+# Fix cloud controller internal hostname for standalone eirini helm chart
+- type: replace
+  path: /instance_groups/name=scheduler/jobs/name=tps/properties/capi/tps/cc/internal_service_hostname?
+  value:  "{{ .Release.Name }}-api.{{ .Release.Namespace }}"
+- type: replace
+  path: /instance_groups/name=scheduler/jobs/name=cloud_controller_clock/properties/cc/internal_service_hostname?
+  value:  "{{ .Release.Name }}-api.{{ .Release.Namespace }}"

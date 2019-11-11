@@ -5,3 +5,7 @@
     readiness: &cloud_controller_worker_readiness
       exec:
         command: [/usr/bin/pgrep, --full, cc-worker-cloud_controller_worker]
+# Fix cloud controller internal hostname for external eirini helm chart
+- type: replace
+  path: /instance_groups/name=cc-worker/jobs/name=cloud_controller_worker/properties/cc/internal_service_hostname?
+  value:  "{{ .Release.Name }}-api.{{ .Release.Namespace }}"

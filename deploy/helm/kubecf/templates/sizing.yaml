@@ -45,7 +45,9 @@ data:
     {{- /* Instances groups where existance depends on whether Eirini is enabled */}}
     {{- if .Values.features.eirini.enabled }}
     {{- $instance_groups = append $instance_groups "bits" }}
+    {{- if .Values.features.eirini.integrated }}
     {{- $instance_groups = append $instance_groups "eirini" }}
+    {{- end }}{{/* if eirini.integrated */}}
     {{- else }}
     {{- $instance_groups = append $instance_groups "diego-cell" }}
     {{- end }}{{/* if eirini */}}

@@ -238,6 +238,7 @@ settings:
 features:
   eirini:
     enabled: false
+    integrated: true
     registry:
       service:
         nodePort: 32123
@@ -250,6 +251,18 @@ features:
     labels: {}
   suse_buildpacks:
     enabled: true
+  blobstore:
+    # possible values for provider: singleton and s3
+    provider: singleton
+    s3:
+      aws_region: "eu-central-1"
+      blobstore_access_key_id: ""
+      blobstore_secret_access_key: ""
+      # The following values are used as S3 bucket names
+      app_package_directory_key: "apps-cf"
+      buildpack_directory_key: "buildpacks-cf"
+      droplet_directory_key: "droplets-cf"
+      resource_directory_key: "resources-cf"
   autoscaler:
     enabled: false
   credhub:
