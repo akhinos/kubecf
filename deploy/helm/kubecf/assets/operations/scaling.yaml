@@ -34,4 +34,4 @@
   value: 2
 - type: replace
   path: /instance_groups/name=database/instances
-  value: 2
+  value: 1 # do not scale because of enable_galera=false
