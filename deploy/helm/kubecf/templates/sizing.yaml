@@ -196,6 +196,7 @@ data:
       value: 1
 {{- end }}
 
+{{- if eq .Values.features.blobstore.provider "singleton" }}
 {{- if .Values.sizing.singleton_blobstore.instances }}
     - type: replace
       path: /instance_groups/name=singleton-blobstore/instances
@@ -205,7 +206,7 @@ data:
       path: /instance_groups/name=singleton-blobstore/instances
       value: 1
 {{- end }}
-
+{{- end }}
 {{- if .Values.sizing.uaa.instances }}
     - type: replace
       path: /instance_groups/name=uaa/instances
