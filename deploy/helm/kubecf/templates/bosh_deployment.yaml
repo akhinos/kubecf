@@ -41,10 +41,8 @@ spec:
   - name: {{ include "kubecf.ops-name" $path }}
     type: configmap
 {{- end }}
-{{- if not .Values.sizing.HA }}
   - name: ops-single-availability
     type: configmap
-{{- end }}
 {{- range $path, $bytes := .Files.Glob "assets/operations/*" }}
   - name: {{ include "kubecf.ops-name" $path }}
     type: configmap

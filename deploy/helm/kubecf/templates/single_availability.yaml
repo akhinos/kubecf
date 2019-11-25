@@ -1,4 +1,3 @@
-{{ if not .Values.sizing.HA -}}
 ---
 apiVersion: v1
 kind: ConfigMap
@@ -12,6 +11,7 @@ metadata:
     app.kubernetes.io/version: {{ default .Chart.Version .Chart.AppVersion | quote }}
     helm.sh/chart: {{ include "kubecf.chart" . }}
 data:
+{{ if not .Values.sizing.HA -}}
   ops: |
     - type: replace
       path: /instance_groups/name=nats/instances
@@ -97,4 +97,65 @@ data:
       path: /instance_groups/name=eirini/azs?
     {{- end }}
 
+{{- else }}
+  ops: |
+    - type: replace
+      path: /instance_groups/name=nats/azs?
+      value: ["europe-west1-b", "europe-west1-c"]
+    - type: replace
+      path: /instance_groups/name=adapter/azs?
+      value: ["europe-west1-b", "europe-west1-c"]
+    
+    - type: remove
+      path: /instance_groups/name=database/azs?
+    - type: replace
+      path: /instance_groups/name=database/instances
+      value: 1
+    
+    - type: replace
+      path: /instance_groups/name=diego-api/azs?
+      value: ["europe-west1-b", "europe-west1-c"]
+    - type: replace
+      path: /instance_groups/name=uaa/azs?
+      value: ["europe-west1-b", "europe-west1-c"]
+    {{- if eq .Values.features.blobstore.provider "singleton" }}
+    - type: remove
+      path: /instance_groups/name=singleton-blobstore/azs?
+    - type: replace
+      path: /instance_groups/name=singleton-blobstore/instances
+      value: 1
+    {{- end }}
+    - type: replace
+      path: /instance_groups/name=api/azs?
+      value: ["europe-west1-b", "europe-west1-c"]
+    - type: replace
+      path: /instance_groups/name=cc-worker/azs?
+      value: ["europe-west1-b", "europe-west1-c"]
+    - type: replace
+      path: /instance_groups/name=scheduler/azs?
+      value: ["europe-west1-b", "europe-west1-c"]
+    - type: replace
+      path: /instance_groups/name=router/azs?
+      value: ["europe-west1-b", "europe-west1-c"]
+    - type: replace
+      path: /instance_groups/name=doppler/azs?
+      value: ["europe-west1-b", "europe-west1-c"]
+    - type: replace
+      path: /instance_groups/name=diego-cell/azs?
+      value: ["europe-west1-b", "europe-west1-c"]
+    - type: replace
+      path: /instance_groups/name=log-api/azs?
+      value: ["europe-west1-b", "europe-west1-c"]
+
+    {{- if .Values.features.eirini.enabled }}
+    - type: replace
+      path: /instance_groups/name=bits/instances
+      value: 1
+    - type: remove
+      path: /instance_groups/name=bits/azs?
+
+    - type: replace
+      path: /instance_groups/name=eirini/azs?
+      value: ["europe-west1-b", "europe-west1-c"]
+    {{- end }}
 {{- end }}
