@@ -157,6 +157,12 @@
             tcpSocket:
               port: 3000
 
+# Fix AWS dns
+# This should no longer be required once we bump from cf-deployment v8 to v12
+- type: replace
+  path: /instance_groups/name=api/jobs/name=routing-api/properties/dns_health_check_host?
+  value: "uaa.service.cf.internal."
+
 # Add quarks properties for cc_uploader.
 - type: replace
   path: /instance_groups/name=api/jobs/name=cc_uploader/properties/quarks?
