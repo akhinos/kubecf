@@ -85,3 +85,11 @@
 - type: replace
   path: /instance_groups/name=scheduler/jobs/name=cfdot/properties/quarks?/bpm/processes
   value: []
+
+# Fix cloud controller internal hostname for standalone eirini helm chart
+- type: replace
+  path: /instance_groups/name=scheduler/jobs/name=tps/properties/capi/tps/cc/internal_service_hostname?
+  value:  {{ .Release.Name }}-api.{{ .Values.ReleaseNamespace }}
+- type: replace
+  path: /instance_groups/name=scheduler/jobs/name=cloud_controller_clock/properties/cc/internal_service_hostname?
+  value:  {{ .Release.Name }}-api.{{ .Values.ReleaseNamespace }}
