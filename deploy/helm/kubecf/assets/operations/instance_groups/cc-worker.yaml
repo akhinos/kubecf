@@ -8,4 +8,4 @@
 # Fix cloud controller internal hostname for standalone eirini helm chart
 - type: replace
   path: /instance_groups/name=cc-worker/jobs/name=cloud_controller_worker/properties/cc/internal_service_hostname?
-  value:  {{ .Release.Name }}-api.{{ .Values.ReleaseNamespace }}
+  value:  "{{ .Release.Name }}-api.{{ .Release.Namespace }}"
