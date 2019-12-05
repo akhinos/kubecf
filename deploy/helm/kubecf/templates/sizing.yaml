@@ -91,11 +91,11 @@ data:
       path: /instance_groups/name=bits/instances
       value: 1
 {{- end }}
-{{- if .Values.sizing.eirini.instances }}
+{{- if and (.Values.sizing.eirini.instances) (.Values.features.eirini.integrated) }}
     - type: replace
       path: /instance_groups/name=eirini/instances
       value: {{.Values.sizing.eirini.instances}}
-{{- else if not .Values.high_availability }}
+{{- else if and (not .Values.high_availability) ( .Values.features.eirini.integrated) }}
     - type: replace
       path: /instance_groups/name=eirini/instances
       value: 1

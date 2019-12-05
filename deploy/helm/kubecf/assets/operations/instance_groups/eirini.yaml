@@ -12,6 +12,7 @@
       network: default
       query: '*'
 
+{{- if .Values.features.eirini.integrated }}
 - type: replace
   path: /instance_groups/name=nats:after
   value:
@@ -122,12 +123,20 @@
             protocol: TCP
             internal: 8484
 
+{{- end }}
+
 # Add eirinifs job to the bits-service to copy the tarball into the bits-service VM
 - type: replace
   path: /instance_groups/name=bits/jobs/name=eirinifs?
   value:
     name: eirinifs
     release: eirini
+
+- type: replace
+  path: /instance_groups/name=bits/jobs/name=eirinifs/properties?/quarks?
+  value:
+    bpm:
+      processes: []
 
 - type: replace
   path: /releases/-
@@ -251,11 +260,6 @@
       extended_key_usage:
       - client_auth
 
-- type: replace
-  path: /instance_groups/name=bits/jobs/name=eirinifs/properties?/quarks?
-  value:
-    bpm:
-      processes: []
 # Make loggregator agent cert validate correctly for fluentd in k8s nodes
 - type: replace
   path: /variables/name=loggregator_tls_agent/options/alternative_names?
@@ -266,9 +270,10 @@
   path: /variables/name=loggregator_tls_doppler/options/alternative_names?/-
   value: metron
 
+{{- if .Values.features.eirini.integrated }}
 {{- $root := . -}}
 {{- range $path, $bytes := .Files.Glob "assets/operations/pre_render_scripts/eirini_*" }}
 {{ $root.Files.Get $path }}
 {{- end }}
-
+{{- end }}
 {{- end }}

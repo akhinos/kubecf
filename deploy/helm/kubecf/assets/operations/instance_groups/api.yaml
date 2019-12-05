@@ -256,7 +256,7 @@
   value: [sh, -c, ss -nlu sport = 3457 | grep :3457]
 
 
-# Fix cloud controller internal hostname for standalone eirini helm chart
+# Fix cloud controller internal hostname for external eirini helm chart
 - type: replace
   path: /instance_groups/name=api/jobs/name=cloud_controller_ng/properties/cc/internal_service_hostname?
   value:  "{{ .Release.Name }}-api.{{ .Release.Namespace }}"

@@ -122,6 +122,7 @@ services:
 features:
   eirini:
     enabled: false
+    integrated: true
     registry:
       service:
         nodePort: 32123

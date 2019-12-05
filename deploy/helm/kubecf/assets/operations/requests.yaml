@@ -213,7 +213,7 @@
     requests:
       cpu: 0m
       memory: 6Mi
-
+{{- if and (.Values.features.eirini.enabled) (.Values.features.eirini.integrated) }}
 - type: replace
   path: /instance_groups/name=eirini/jobs/name=eirini-loggregator-bridge/properties?/quarks?/bpm?/processes?/-
   value:
@@ -229,7 +229,7 @@
     requests:
       cpu: 6m
       memory: 20Mi
-
+{{- end }}
 - type: replace
   path: /instance_groups/name=log-api/jobs/name=loggregator_trafficcontroller/properties?/quarks?/bpm?/processes?/-
   value:
