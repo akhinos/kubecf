@@ -183,14 +183,6 @@
       memory: 8Mi
 
 - type: replace
-  path: /instance_groups/name=doppler/jobs/name=log-cache-expvar-forwarder/properties?/quarks?/bpm?/processes?/-
-  value:
-    name: log-cache-expvar-forwarder
-    requests:
-      cpu: 0m
-      memory: 14Mi
-
-- type: replace
   path: /instance_groups/name=doppler/jobs/name=log-cache-gateway/properties?/quarks?/bpm?/processes?/-
   value:
     name: log-cache-gateway
@@ -301,22 +293,6 @@
     requests:
       cpu: 4m
       memory: 466Mi
-
-- type: replace
-  path: /instance_groups/name=scheduler/jobs/name=log-cache-expvar-forwarder/properties?/quarks?/bpm?/processes?/-
-  value:
-    name: log-cache-expvar-forwarder
-    requests:
-      cpu: 0m
-      memory: 16Mi
-
-- type: replace
-  path: /instance_groups/name=scheduler/jobs/name=log-cache-scheduler/properties?/quarks?/bpm?/processes?/-
-  value:
-    name: log-cache-scheduler
-    requests:
-      cpu: 6m
-      memory: 14Mi
 
 - type: replace
   path: /instance_groups/name=scheduler/jobs/name=scheduler/properties?/quarks?/bpm?/processes?/-
