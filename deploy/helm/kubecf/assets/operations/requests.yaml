@@ -95,14 +95,6 @@
       memory: 10Mi
 
 - type: replace
-  path: /instance_groups/name=api/jobs/name=routing-api/properties?/quarks?/bpm?/processes?/-
-  value:
-    name: routing-api
-    requests:
-      cpu: 4m
-      memory: 38Mi
-
-- type: replace
   path: /instance_groups/name=api/jobs/name=statsd_injector/properties?/quarks?/bpm?/processes?/-
   value:
     name: statsd_injector
