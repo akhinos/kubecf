@@ -165,6 +165,8 @@
     requests:
       cpu: 16m
       memory: 522Mi
+    limits:
+      memory: 1Gi
 
 - type: replace
   path: /instance_groups/name=doppler/jobs/name=log-cache-cf-auth-proxy/properties?/quarks?/bpm?/processes?/-
